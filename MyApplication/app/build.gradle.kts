@@ -8,40 +8,45 @@ plugins {
 
 android {
     namespace = "com.example.myapplication"
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "com.example.myapplication"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
+
+        // Required for Hilt
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["dagger.hilt.android.internal.disableAndroidSuperclassValidation"] = "true"
+            }
         }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility(JavaVersion.VERSION_17)
+        targetCompatibility(JavaVersion.VERSION_17)
     }
+
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
+
     buildFeatures {
         compose = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
@@ -57,7 +62,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.4.2")
     implementation("com.google.android.material:material:1.6.1")
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.0"))
 
     // compose
     implementation("androidx.activity:activity-compose:1.5.1")
@@ -94,8 +99,8 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.0")
 
     // Hilt for Dependency Injection
-    implementation("com.google.dagger:hilt-android:2.45")
-    kapt("com.google.dagger:hilt-compiler:2.45")
+    implementation("com.google.dagger:hilt-android:2.46")
+    kapt("com.google.dagger:hilt-compiler:2.46")
 
     // Hilt for ViewModels
 //    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
@@ -113,8 +118,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     // Hilt for testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.45")
-    kaptAndroidTest("com.google.dagger:hilt-compiler:2.45")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.46")
+    kaptAndroidTest("com.google.dagger:hilt-compiler:2.46")
 }
 
 kapt {
@@ -122,4 +127,4 @@ kapt {
 }
 
 // Apply the Hilt plugin
-//apply(plugin = "dagger.hilt.android.plugin")
+apply(plugin = "dagger.hilt.android.plugin")
