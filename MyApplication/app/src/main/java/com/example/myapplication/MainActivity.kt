@@ -10,8 +10,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -19,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -51,19 +54,21 @@ fun Display(viewModel: AgifyViewModel) {
     val name by viewModel.nameState.observeAsState()
 
     Column {
-        Row(modifier = Modifier.padding(10.dp)) {
+        Row(modifier = Modifier.padding(10.dp).align(Alignment.CenterHorizontally)) {
             // Button for Michael's age
-            TextButton(onClick = { viewModel.getAge("michael") }) {
+            OutlinedButton(onClick = { viewModel.getAge("michael") }) {
                 Text("Michael")
             }
+            Spacer(modifier = Modifier.width(16.dp))
 
             // Button for Sarah's age
-            TextButton(onClick = { viewModel.getAge("sarah") }) {
+            OutlinedButton(onClick = { viewModel.getAge("sarah") }) {
                 Text("Sarah")
             }
+            Spacer(modifier = Modifier.width(16.dp))
 
             // Button for John’s age
-            TextButton(onClick = { viewModel.getAge("john") }) {
+            OutlinedButton(onClick = { viewModel.getAge("john") }) {
                 Text("John")
             }
         }
