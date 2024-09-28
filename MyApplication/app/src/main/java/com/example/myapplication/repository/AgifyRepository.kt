@@ -10,8 +10,6 @@ class AgifyRepository @Inject constructor(
     private val agifyAPIService: AgifyAPIService
 )  {
     suspend fun getAgeOfNameFromNetwork(name: String): AgifyResponse {
-        return withContext(Dispatchers.IO) {
-            agifyAPIService.getAge(name)
-        }
+        return agifyAPIService.getAge(name)
     }
 }
