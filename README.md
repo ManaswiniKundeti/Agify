@@ -11,9 +11,9 @@
 
 ## Screenshots
 <p align="center">
-<img src="/screenshots/michael.png" width="270"/>
-<img src="/screenshots/sarah" width="270"/>
-<img src="/screenshots/john.png" width="270"/>
+<img src="/MyApplication/screenshots/michael.png" width="270"/>
+<img src="/MyApplication/screenshots/sarah.png" width="270"/>
+<img src="/MyApplication/screenshots/john.png" width="270"/>
 </p>
 
 
